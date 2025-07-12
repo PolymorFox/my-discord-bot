@@ -8,6 +8,11 @@ This is a discord bot that I made using [Discord.py](https://discordpy.readthedo
 - Pip
 - discord.py
 
+Install all dependecies using:
+```
+pip install -r requirements.txt
+```
+
 ## Usage
 
 ```
@@ -15,7 +20,7 @@ python bot.py --token <your api token>
 ```
 ### Commands
 
-**Note**: Command are invoked using **!**
+**Note**: Commands are invoked using **!**
 
 - **!greet**: Send back a greeting messsage at the author with their username
 - **!info**: Takes an argument of member and prints out member's username, display name, and join date
