@@ -20,7 +20,6 @@ log_handler = logging.FileHandler(filename="discord.log",encoding="UTF-8",mode="
 async def on_ready():
     for guild in bot.guilds:
         print(f"Bot has logged into {guild}")
-        server_name = guild.name
 
 @bot.command()
 async def greet(ctx):
@@ -59,7 +58,21 @@ async def dump(ctx,*,channel: discord.TextChannel):
         
         history_full_path = os.path.abspath(history_file_path)
         file = discord.File(history_full_path)
-        await ctx.author.send(f"{ctx.author.mention} History of {channel.name} on guild {server_name}",file=file)
+        await ctx.author.send(f"{ctx.author.mention} History of {channel.name} on guild {bot.guilds[0]}",file=file)
         os.remove(history_file_path)
+
+@bot.command()
+async def send(ctx,*, member: discord.Member):
+    if member is None:
+        member = ctx.author
+
+    message = f"{member.mention} {ctx.author.name} says hi!"
+    await ctx.channel.send(message)
+
+@bot.command()
+async def flood(ctx, member: discord.Member,limit: int):
+   for i in range(limit):
+        message = f"{bot.user.name} is flooding {member.mention} with messages"
+        await member.send(message)        
 
 bot.run(token=token,log_handler=log_handler)
