@@ -22,8 +22,8 @@ python bot.py --token <your api token>
 
 **Note**: Commands are invoked using **!**
 
-- **!greet**: Send back a greeting messsage at the author with their username
-- **!info**: Takes an argument of member and prints out member's username, display name, and join date
-- **!dump**: Takes an argument of a channel and creates a file with all the messages in that text channel, before sending a message to the author as a dm, with the text file as an attachment
-- **!send**: Takes an argument of a member and sends a hello message to that user
-- **!flood** Takes an argument of a member and a limit, to send a limit number of dms to the member
+- **!greet**: Replies to the command author with a greeting that includes their username.
+- **!info `<member>`**: Displays the specified member's username, display name, and the date they joined the server.
+- **!dump `<channel>`**: Collects all messages from the specified text channel, saves them to a file, and sends that file to the author via direct message.
+- **!send `<member>`**: Sends a hello message directly to the specified member.
+- **!flood `<member>` `<limit>` `[message]`**: Sends the specified member a number of direct messages equal to `<limit>`. Optionally, you can provide a custom `[message]`; if omitted, a default hello message is used.

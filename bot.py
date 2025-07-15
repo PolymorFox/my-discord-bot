@@ -70,9 +70,21 @@ async def send(ctx,*, member: discord.Member):
     await ctx.channel.send(message)
 
 @bot.command()
-async def flood(ctx, member: discord.Member,limit: int):
-   for i in range(limit):
-        message = f"{bot.user.name} is flooding {member.mention} with messages"
-        await member.send(message)        
+async def message(ctx, member: discord.Member, *, message: str):
+    if member is None:
+        member = ctx.author
+
+    await member.send(f"{ctx.author.name} says: {message}")
+ 
+@bot.command()
+async def flood(ctx, member: discord.Member, limit: int, *, message: str):
+    if member is None:
+        member = ctx.author
+
+    if message == '':
+        message = f"{ctx.author.name} is spamming {member.name} with {limit} messages"
+
+    for i in range(limit):
+        await member.send(message)
 
 bot.run(token=token,log_handler=log_handler)
